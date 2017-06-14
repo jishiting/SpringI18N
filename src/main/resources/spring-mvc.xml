@@ -15,12 +15,10 @@
         http://www.springframework.org/schema/tx   
         http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
-	<!-- make MVC annotation working-->
+	<!-- make MVC annotation working -->
 	<mvc:annotation-driven />
 
-	<!-- 
-	solution2 get the static resource
-	-->
+	<!-- solution2 get the static resource -->
 	<mvc:resources mapping="/themes/**" location="/themes/" />
 	<!-- default page -->
 	<mvc:view-controller path="/" view-name="i18n/welcome" />
@@ -32,7 +30,7 @@
 			expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
 
-	<!-- JSP view resolver  -->
+	<!-- JSP view resolver -->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/jsp/" />
@@ -44,7 +42,7 @@
 	<bean id="messageSource"
 		class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basename">
-			<!-- the path is classes->messages->  -->
+			<!-- the path is classes->messages-> -->
 			<value>messages/message</value>
 		</property>
 	</bean>
@@ -72,4 +70,18 @@
 		class="org.springframework.web.servlet.theme.CookieThemeResolver">
 		<property name="defaultThemeName" value="theme_english" />
 	</bean>
+		<!-- the way for Fixed resolver -->
+	<!-- 
+	<bean id="themeResolver"
+		class="org.springframework.web.servlet.theme.FixedThemeResolver">
+		<property name="defaultThemeName" value="summer" />
+	</bean> 
+	-->
+	<!-- the way for Session resolver -->
+	<!-- 
+	<bean id="themeResolver"
+	class="org.springframework.web.servlet.theme.SessionThemeResolver">
+	<property name="defaultThemeName" value="summer" />
+	</bean> 
+	 -->
 </beans>
