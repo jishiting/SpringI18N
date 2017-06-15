@@ -74,14 +74,22 @@
 	<!-- 
 	<bean id="themeResolver"
 		class="org.springframework.web.servlet.theme.FixedThemeResolver">
-		<property name="defaultThemeName" value="summer" />
+		<property name="defaultThemeName" value="theme_english" />
 	</bean> 
 	-->
 	<!-- the way for Session resolver -->
 	<!-- 
 	<bean id="themeResolver"
 	class="org.springframework.web.servlet.theme.SessionThemeResolver">
-	<property name="defaultThemeName" value="summer" />
+	<property name="defaultThemeName" value="theme_english" />
 	</bean> 
 	 -->
+	 <!-- here is a interceptor that can be modify by request  -->
+	 <!-- http://localhost:8081/i18n/?theme=theme_english -->
+	<bean id="themeChangeInterceptor" class="org.springframework.web.servlet.theme.ThemeChangeInterceptor">
+		<property name="paramName" value="theme" />
+	</bean>
+	<mvc:interceptors>
+   		<ref bean="themeChangeInterceptor"></ref>
+	</mvc:interceptors>
 </beans>
